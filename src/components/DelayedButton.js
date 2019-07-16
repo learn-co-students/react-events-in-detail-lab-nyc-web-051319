@@ -1,1 +1,19 @@
+import React, { Component } from 'react'
 // Code DelayedButton Component Here
+
+export default class DelayedButton extends Component {
+
+  logEvent = (event) => {
+    event.persist()
+    setTimeout(function() {
+      this.props.onDelayedClick(event)
+    }.bind(this)
+    ,this.props.delay)
+  }
+
+  render() {
+    return (
+      <button onClick={this.logEvent} ></button>
+    )
+  }
+}
